@@ -1,0 +1,15 @@
+response('hello', 'Welcome!').
+response('what is the weather like?', 'It is sunny today.').
+response('what is date today?', Date) :- get_time(Time), format_time(atom(Date), '%D', Time).
+response('what time is it?', TimeAtom) :- get_time(Time), format_time(atom(TimeAtom), '%T', Time).
+
+respond(Query, Response) :-
+    (response(Query, Response) -> true; Response = 'I am not sure what you mean...').
+
+chat :-repeat,
+    write('You: '),
+    read_line_to_codes(user_input, Input),
+    atom_codes(Query, Input),
+
+    (Query = bye -> write('Chatbot: Goodbye!'), nl, !;
+    respond(Query, Response), write('Chatbot: '), write(Response), nl, fail).
