@@ -1,0 +1,33 @@
+public class Calculator {
+    
+    public static Integer performCalculation(Integer x, Integer y, Integer z) {
+        if(z == 1) { 
+            return add(x, y);
+        } else if(z == 2) {
+            return subtract(x, y);
+        } else if(z == 3) {
+            return multiply(x, y);
+        } else {
+            // Handle invalid operation or return null
+            return null;
+        }
+    }   
+
+    public static Integer add(Integer x, Integer y) {
+        Integer c = x + y;
+        System.debug('Addition is: ' + c);
+        return c;
+    }
+
+    public static Integer subtract(Integer x, Integer y) {
+        Integer c = x - y;
+        System.debug('Subtraction is: ' + c);
+        return c;
+    }
+
+    public static Integer multiply(Integer x, Integer y) {
+        Integer c = x * y;
+        System.debug('Multiplication is: ' + c);
+        return c;
+    }  
+}
